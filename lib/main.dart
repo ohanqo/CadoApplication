@@ -1,10 +1,10 @@
+import 'package:cadeaux_app/pages/Register.dart';
 import 'package:flutter/material.dart';
-import 'package:cadeaux_app/pages/CadeauDetails.dart';
-import 'package:cadeaux_app/pages/Friends.dart';
 
 void main() => runApp(Cado());
 
-final ThemeData cadoTheme = ThemeData(bottomAppBarColor: Color.fromARGB(255,242, 74, 85));
+final ThemeData cadoTheme = ThemeData(
+    bottomAppBarColor: Color.fromARGB(255, 242, 74, 85), fontFamily: 'Segoe');
 
 class Cado extends StatelessWidget {
   // This widget is the root of your application.
@@ -12,7 +12,7 @@ class Cado extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Cado",
-      home: CadeauDetails(),
+      home: Register(),
       debugShowCheckedModeBanner: false,
       theme: cadoTheme,
     );

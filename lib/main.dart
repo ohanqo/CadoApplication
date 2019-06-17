@@ -1,4 +1,3 @@
-
 import 'package:cadeaux_app/pages/CadeauDetails.dart';
 import 'package:cadeaux_app/pages/Groups.dart';
 import 'package:cadeaux_app/pages/Register.dart';
@@ -31,7 +30,7 @@ class Cado extends StatelessWidget {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       title: "Cado",
-      home: CadeauDetails(),
+      home: Register(),
       debugShowCheckedModeBanner: false,
       theme: cadoTheme,
     );

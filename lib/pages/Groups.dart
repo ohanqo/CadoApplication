@@ -3,7 +3,7 @@ import 'package:cadeaux_app/components/MenuNavbar.dart';
 import 'package:cadeaux_app/components/ListItem.dart';
 import 'package:flutter/material.dart';
 
-class Friends extends StatelessWidget {
+class Groups extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class Friends extends StatelessWidget {
                                 splashColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 child: Text(
-                                  "Tout voir(5)",
+                                  "Tout voir(10)",
                                   style: TextStyle(
                                       color: Theme.of(context).primaryColor),
                                 ))
@@ -70,7 +70,7 @@ class Friends extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 5.0, left: 10.0),
                     child: Text(
-                      "Liste d'amis",
+                      "Vos groupes",
                       style: TextStyle(
                           fontSize: 17.0, fontWeight: FontWeight.bold),
                     ),
@@ -79,7 +79,7 @@ class Friends extends StatelessWidget {
               ),
               Expanded(
                   child: ListView.builder(
-                itemBuilder: (_, int index) => ListItem(name: "Jean Dupont", type: 'delete',),
+                itemBuilder: (_, int index) => ListItem(name: "Anniversaire", type: 'delete',),
                 itemCount: 20,
               )),
             ],

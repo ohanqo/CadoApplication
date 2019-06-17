@@ -1,5 +1,5 @@
-import 'package:cadeaux_app/pages/Register.dart';
 import 'package:flutter/material.dart';
+import 'package:cadeaux_app/pages/HomePage.dart';
 
 void main() => runApp(Cado());
 
@@ -12,7 +12,7 @@ class Cado extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Cado",
-      home: Register(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
       theme: cadoTheme,
     );

@@ -9,10 +9,10 @@ class MenuNavbar extends StatelessWidget {
       selectedItemColor: Color.fromARGB(255, 255, 255, 255),
       unselectedItemColor: Color.fromARGB(153, 255, 255, 255),
       items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.group), title: Text('Groupes')),
-        BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Accueil')),
         BottomNavigationBarItem(
-            icon: Icon(Icons.person), title: Text('Amis'))
+            icon: Icon(Icons.group), title: Text('Groupes')),
+        BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Accueil')),
+        BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('Amis'))
       ],
     );
   }

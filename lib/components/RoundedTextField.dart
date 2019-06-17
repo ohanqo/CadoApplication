@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 
 class RoundedTextField extends StatefulWidget {
   RoundedTextField(
-      {Key key, this.placeholder, this.textInputType = TextInputType.text})
+      {Key key,
+      this.placeholder,
+      this.textInputType = TextInputType.text,
+      this.isTextObscur = false,
+      this.validator,
+      this.textEditingController})
       : super(key: key);
 
   final String placeholder;
   final TextInputType textInputType;
+  final bool isTextObscur;
+  final String Function(String) validator;
+  final TextEditingController textEditingController;
 
   @override
   RoundedTextFieldState createState() => RoundedTextFieldState();
@@ -40,9 +48,11 @@ class RoundedTextFieldState extends State<RoundedTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.textEditingController,
       focusNode: focusNode,
       keyboardType: widget.textInputType,
-      initialValue: '',
+      obscureText: widget.isTextObscur,
+      validator: widget.validator,
       cursorColor: Colors.pink,
       decoration: InputDecoration(
           labelStyle: TextStyle(

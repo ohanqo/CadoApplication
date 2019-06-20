@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:cadeaux_app/components/RoundedTextField.dart';
 import 'package:cadeaux_app/dto/CreateUserDto.dart';
+import 'package:cadeaux_app/pages/Login.dart';
 import 'package:cadeaux_app/repositories/UserRepository.dart';
 import 'package:cadeaux_app/utils/Constants.dart';
 import 'package:flutter/material.dart';
@@ -113,8 +114,8 @@ class RegisterState extends State<Register> {
       textEditingController: passwordController,
     );
 
-    final loginNavigation = GestureDetector(
-      onTap: () => print("Bouton connexion cliqué"),
+    final loginNavigation = InkWell(
+      onTap: () => { Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()))},
       child: Text(
         'Connexion',
         style: TextStyle(color: Colors.pink),

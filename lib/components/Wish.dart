@@ -1,4 +1,5 @@
 import 'package:cadeaux_app/models/Cadeau.dart';
+import 'package:cadeaux_app/pages/CadeauDetails.dart';
 import 'package:flutter/material.dart';
 
 class Wish extends StatelessWidget {
@@ -17,15 +18,23 @@ class Wish extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: gift.picture != ''
-                    ? Image.network(
-                        gift.picture,
-                      )
-                    : Image(
-                        image: AssetImage('assets/cadoIlustration.png'),
-                      ),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CadeauDetails(this.gift)));
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: gift.picture != ''
+                      ? Image.network(
+                          gift.picture,
+                        )
+                      : Image(
+                          image: AssetImage('assets/cadoIlustration.png'),
+                        ),
+                ),
               )),
           Expanded(
             child: Container(

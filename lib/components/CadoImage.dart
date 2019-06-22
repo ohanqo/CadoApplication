@@ -18,8 +18,9 @@ class CadoImage extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
-        child: Image.network(
-          "https://picsum.photos/250?image=9",
+        child: FadeInImage.assetNetwork(
+          placeholder: 'assets/cadoIlustration.png',
+          image: "https://picsum.photos/250?image=9",
           fit: BoxFit.cover,
         ),
       ),

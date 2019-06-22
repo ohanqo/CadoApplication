@@ -14,7 +14,6 @@ import 'package:flutter/cupertino.dart';
 
 import '../components/CadoImageClickable.dart';
 import 'package:cadeaux_app/components/RoundedTextField.dart';
-import '../components/MenuNavbar.dart';
 
 class AddCadeau extends StatefulWidget {
   AddCadeau({Key key}) : super(key: key);
@@ -135,7 +134,6 @@ class _AddCadeauState extends State<AddCadeau> {
           ),
         ),
       )),
-      bottomNavigationBar: MenuNavbar(),
     );
   }
 

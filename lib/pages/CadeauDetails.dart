@@ -22,7 +22,14 @@ class CadeauDetails extends StatelessWidget {
                 constraints: BoxConstraints(
                     minWidth: MediaQuery.of(context).size.width,
                     maxHeight: MediaQuery.of(context).size.height / 3),
-                child: CadoImage(),
+                child: Hero(
+                  tag: cadeau.id,
+                  child: cadeau.picture != ''
+                      ? CadoImage(cadeau.picture)
+                      : Image(
+                          image: AssetImage('assets/cadoIlustration.png'),
+                        ),
+                ),
               ),
               Container(
                 child: Padding(

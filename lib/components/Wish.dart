@@ -27,13 +27,16 @@ class Wish extends StatelessWidget {
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
-                  child: gift.picture != ''
-                      ? Image.network(
-                          gift.picture,
-                        )
-                      : Image(
-                          image: AssetImage('assets/cadoIlustration.png'),
-                        ),
+                  child: Hero(
+                    tag: gift.id,
+                    child: gift.picture != ''
+                        ? Image.network(
+                            gift.picture,
+                          )
+                        : Image(
+                            image: AssetImage('assets/cadoIlustration.png'),
+                          ),
+                  ),
                 ),
               )),
           Expanded(

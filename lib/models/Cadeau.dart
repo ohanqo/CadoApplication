@@ -3,9 +3,9 @@ class Cadeau {
   final int price;
   final String description;
   final String picture;
-  final String url;
+  final String link;
 
-  Cadeau({this.name, this.price, this.description, this.picture, this.url});
+  Cadeau({this.name, this.price, this.description, this.picture, this.link});
 
   factory Cadeau.fromJson(Map<String, dynamic> json) {
     return Cadeau(
@@ -13,7 +13,7 @@ class Cadeau {
       price: json['price'],
       description: json['description'],
       picture: json['picture'],
-      url: json['url'],
+      link: json['link'],
     );
   }
 }

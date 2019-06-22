@@ -17,7 +17,7 @@ class UserInfo extends StatelessWidget {
                   border: Border.all(width: 5, color: Colors.redAccent),
                   image: DecorationImage(fit: BoxFit.fill, image: assetsImage)),
             ),
-            Text("User name", textScaleFactor: 1.5)
+            Text("Antoine Adam", textScaleFactor: 1.5)
           ],
         ))));
   }

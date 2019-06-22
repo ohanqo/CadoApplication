@@ -1,5 +1,4 @@
 import 'package:cadeaux_app/components/InvitationItem.dart';
-import 'package:cadeaux_app/components/MenuNavbar.dart';
 import 'package:cadeaux_app/components/ListItem.dart';
 import 'package:flutter/material.dart';
 
@@ -94,7 +93,6 @@ class Friends extends StatelessWidget {
         ),
         onPressed: () {},
       ),
-      bottomNavigationBar: MenuNavbar(),
     );
   }
 }

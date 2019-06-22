@@ -1,5 +1,5 @@
-import 'package:cadeaux_app/pages/HomePage.dart';
 import 'package:cadeaux_app/pages/Login.dart';
+import 'package:cadeaux_app/pages/NavigationWrapper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +47,7 @@ class _StartPageState extends State<StartPage> {
       body: isLoggedIn == null
           ? loadingScreen
           : Scaffold(
-              body: isLoggedIn ? HomePage() : LoginPage(),
+              body: isLoggedIn ? NavigationWrapper() : LoginPage(),
             ),
     );
   }

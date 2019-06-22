@@ -1,7 +1,7 @@
 import 'package:cadeaux_app/components/RoundedTextField.dart';
 import 'package:cadeaux_app/dtos/LoginResponse.dart';
 import 'package:cadeaux_app/dtos/LoginUserDto.dart';
-import 'package:cadeaux_app/pages/HomePage.dart';
+import 'package:cadeaux_app/pages/NavigationWrapper.dart';
 import 'package:cadeaux_app/repositories/UserRepository.dart';
 import 'package:cadeaux_app/utils/Constants.dart';
 import 'package:flutter/material.dart';
@@ -263,8 +263,8 @@ class _LoginPageState extends State<LoginPage> {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('token', response.token);
 
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => NavigationWrapper()));
 
         break;
       case Constants.REQUEST_NOT_FOUND_CODE:

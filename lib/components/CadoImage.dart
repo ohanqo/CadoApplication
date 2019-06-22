@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CadoImage extends StatelessWidget {
-  const CadoImage({Key key}) : super(key: key);
+  final String photoUrl;
+
+  CadoImage(this.photoUrl);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,8 @@ class CadoImage extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
-        child: FadeInImage.assetNetwork(
-          placeholder: 'assets/cadoIlustration.png',
-          image: "https://picsum.photos/250?image=9",
+        child: Image.network(
+          photoUrl,
           fit: BoxFit.cover,
         ),
       ),

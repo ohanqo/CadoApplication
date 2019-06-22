@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "340742626664",
+    "firebase_url": "https://cado-f7a35.firebaseio.com",
+    "project_id": "cado-f7a35",
+    "storage_bucket": "cado-f7a35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340742626664:android:2a688b667c0f668c",
+        "android_client_info": {
+          "package_name": "fr.upsud.cadeaux_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340742626664-i21q5ae05iitk45bm6lbvc53oa7ibrvo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLW1u0vauD2NZIEoY7G6rN7ZsYYmPyJ4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340742626664-i21q5ae05iitk45bm6lbvc53oa7ibrvo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

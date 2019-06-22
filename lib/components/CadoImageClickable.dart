@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 class CadoImageClickable extends StatefulWidget {
   CadoImageClickable({Key key, this.changeImage, this.image}) : super(key: key);
 
-  final void Function (File) changeImage;
+  final void Function(File) changeImage;
   final File image;
 
   _CadoImageClickableState createState() => _CadoImageClickableState();
@@ -16,7 +16,8 @@ class _CadoImageClickableState extends State<CadoImageClickable> {
   File image;
 
   Future getImage() async {
-    image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    image = await ImagePicker.pickImage(
+        source: ImageSource.gallery, maxHeight: 600, maxWidth: 1200);
 
     setState(() {
       image = image;
@@ -45,9 +46,8 @@ class _CadoImageClickableState extends State<CadoImageClickable> {
           child: GestureDetector(
             onTap: getImage,
             child: image == null
-                ? Image.network(
-                    "https://picsum.photos/250?image=9",
-                    fit: BoxFit.cover,
+                ? Image(
+                    image: AssetImage('assets/cadoIlustration.png'),
                   )
                 : Image.file(
                     image,

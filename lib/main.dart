@@ -1,13 +1,6 @@
-import 'package:cadeaux_app/pages/CadeauDetails.dart';
-import 'package:cadeaux_app/pages/Groups.dart';
-import 'package:cadeaux_app/pages/Register.dart';
-import 'package:cadeaux_app/pages/Friends.dart';
-import 'package:cadeaux_app/pages/AddFriends.dart';
-import 'package:cadeaux_app/pages/Login.dart';
+import 'package:cadeaux_app/pages/StartPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/material.dart';
-import 'package:cadeaux_app/pages/HomePage.dart';
 
 void main() => runApp(Cado());
 
@@ -31,7 +24,7 @@ class Cado extends StatelessWidget {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       title: "Cado",
-      home: LoginPage(),
+      home: StartPage(),
       debugShowCheckedModeBanner: false,
       theme: cadoTheme,
     );

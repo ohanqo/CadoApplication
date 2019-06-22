@@ -1,7 +1,7 @@
-import 'package:cadeaux_app/dto/CreateUserDto.dart';
+import 'package:cadeaux_app/dtos/CreateUserDto.dart';
 import 'package:cadeaux_app/utils/Constants.dart';
 import 'package:http/http.dart' as http;
-import 'package:cadeaux_app/dto/LoginUserDto.dart';
+import 'package:cadeaux_app/dtos/LoginUserDto.dart';
 
 class UserRepository {
   UserRepository._privateConstructor();
@@ -19,6 +19,6 @@ class UserRepository {
 
   Future<http.Response> login(LoginUserDto loginDto) async {
     return await http.post("${Constants.API_BASE_URL}/login",
-        body:loginDto.toJson());
+        body: loginDto.toJson());
   }
 }

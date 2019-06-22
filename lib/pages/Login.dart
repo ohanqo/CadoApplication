@@ -1,23 +1,25 @@
 import 'package:cadeaux_app/components/RoundedTextField.dart';
-import 'package:cadeaux_app/dto/LoginUserDto.dart';
+import 'package:cadeaux_app/dtos/LoginResponse.dart';
+import 'package:cadeaux_app/dtos/LoginUserDto.dart';
+import 'package:cadeaux_app/pages/HomePage.dart';
 import 'package:cadeaux_app/repositories/UserRepository.dart';
 import 'package:cadeaux_app/utils/Constants.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:keyboard_visibility/keyboard_visibility.dart';
 
 import 'Register.dart';
 
-
-class LoginPage extends StatefulWidget{
+class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => new _LoginPageState();
-
 }
 
-class _LoginPageState extends State <LoginPage> {
+class _LoginPageState extends State<LoginPage> {
   int loadingState = 0;
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
@@ -25,7 +27,6 @@ class _LoginPageState extends State <LoginPage> {
   bool isKeyboardVisible = false;
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey();
   GlobalKey<FormState> formKey = new GlobalKey();
-
 
   @protected
   void initState() {
@@ -40,20 +41,16 @@ class _LoginPageState extends State <LoginPage> {
     );
   }
 
-
   @override
-
-  Widget build(BuildContext context){
-
+  Widget build(BuildContext context) {
     final logo = Hero(
-      tag:'hero',
-      child:CircleAvatar(
+      tag: 'hero',
+      child: CircleAvatar(
         backgroundColor: Colors.transparent,
         radius: 78.0,
         child: Image.asset('assets/logo.png'),
       ),
     );
-
 
     Function(String) validateEmail = (String value) {
       String pattern =
@@ -95,11 +92,11 @@ class _LoginPageState extends State <LoginPage> {
     var background = isKeyboardVisible
         ? Container(height: 0)
         : Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/background.png"),
-              fit: BoxFit.fill)),
-    );
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/background.png"),
+                    fit: BoxFit.fill)),
+          );
 
     Widget loginButtonContent() {
       switch (loadingState) {
@@ -123,14 +120,12 @@ class _LoginPageState extends State <LoginPage> {
       }
     }
 
-
     final loginButton = Padding(
-
       padding: const EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
-     // padding: EdgeInsets.only(left: 94.0, right:94.0),
+      // padding: EdgeInsets.only(left: 94.0, right:94.0),
 
-     // padding: EdgeInsets.symmetric(vertical: 36.0),
-      child:Material(
+      // padding: EdgeInsets.symmetric(vertical: 36.0),
+      child: Material(
         borderRadius: BorderRadius.circular(12.0),
         shadowColor: Colors.lightBlueAccent.shade100,
         color: Colors.pink,
@@ -139,43 +134,11 @@ class _LoginPageState extends State <LoginPage> {
           //color: Colors.green,
           minWidth: 200.0,
           height: 42.0,
-          onPressed: ()=> handleLoginClick(),
+          onPressed: () => handleLoginClick(),
           child: loginButtonContent(),
         ),
-
-        ),
+      ),
     );
-
-
-
-
-    _forgotLabel() {
-      return Padding(
-        padding: EdgeInsets.all(0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: Container(
-              ),
-            ),
-           // SizedBox(width: 15.0),
-            Expanded(
-                child: Container(
-                  child: FlatButton(
-                    child: Text(
-                      'Mot de passe oublié?',
-                      style:TextStyle(color: Colors.pink ,fontSize: 13.0),
-                    ),
-                    onPressed:() {},
-                    ),
-                ))
-          ],
-        ),
-      );
-    }
-
-
 
     _signUp() {
       return Padding(
@@ -185,77 +148,75 @@ class _LoginPageState extends State <LoginPage> {
           children: <Widget>[
             Expanded(
               child: Container(
-                  child: Text(
-                    'Nouvel utilisateur?',
-                    style:TextStyle(color: Colors.black54 ,fontSize: 13.0),
-                    textAlign: TextAlign.end
-                  ),
+                child: Text('Nouvel utilisateur?',
+                    style: TextStyle(color: Colors.black54, fontSize: 13.0),
+                    textAlign: TextAlign.end),
               ),
             ),
             Expanded(
                 child: Container(
-                  child: FlatButton(
-                    child: Text(
-                      'S\'enregistrer',
-                      textAlign: TextAlign.start,
-                      style:TextStyle(color: Colors.pink ,fontSize: 13.0),
-                    ),
-                    onPressed:() {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Register()));
-                    },
-                  ),
-                ))
+              child: FlatButton(
+                child: Text(
+                  'S\'enregistrer',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: Colors.pink, fontSize: 13.0),
+                ),
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => Register()));
+                },
+              ),
+            ))
           ],
         ),
       );
     }
 
-
-
     return Scaffold(
       key: scaffoldKey,
-      body:Stack(
-          fit:StackFit.expand,
-          children: <Widget>[
-            background,
-            Column(
-              children: <Widget>[
-                Expanded(
-                  child: Form(
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          background,
+          Column(
+            children: <Widget>[
+              Expanded(
+                child: Form(
                   key: formKey,
                   autovalidate: isFormAutoValidatingFields,
                   child: ListView(
-                      shrinkWrap:true,
-                   // padding: EdgeInsets.symmetric(vertical: 160.0),
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(top: 50.0),
-                          child: logo,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 25.0, right: 80.0, left: 80.0),
-                          child: email,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 25.0, right: 80.0, left: 80.0),
-                          child: password,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 25.0, right: 65.0, left: 65.0),
-                          padding: EdgeInsets.all(10.0),
-                          child: loginButton,
-                        ),
-                        _signUp()
-                      ],
+                    shrinkWrap: true,
+                    // padding: EdgeInsets.symmetric(vertical: 160.0),
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(top: 50.0),
+                        child: logo,
                       ),
-
+                      Container(
+                        margin:
+                            EdgeInsets.only(top: 25.0, right: 80.0, left: 80.0),
+                        child: email,
+                      ),
+                      Container(
+                        margin:
+                            EdgeInsets.only(top: 25.0, right: 80.0, left: 80.0),
+                        child: password,
+                      ),
+                      Container(
+                        margin:
+                            EdgeInsets.only(top: 25.0, right: 65.0, left: 65.0),
+                        padding: EdgeInsets.all(10.0),
+                        child: loginButton,
+                      ),
+                      _signUp()
+                    ],
                   ),
                 ),
-              ],
-            )
-          ],
-
-    ),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 
@@ -279,15 +240,14 @@ class _LoginPageState extends State <LoginPage> {
     });
 
     LoginUserDto createUserDto = new LoginUserDto(
-        username: emailController.text,
-        password: passwordController.text);
+        username: emailController.text, password: passwordController.text);
 
     final res = await UserRepository.instance.login(createUserDto);
 
     handleRegisterResponse(res);
   }
 
-  void handleRegisterResponse(http.Response res) {
+  void handleRegisterResponse(http.Response res) async {
     switch (res.statusCode) {
       case Constants.REQUEST_LOGIN_OK_CODE:
         setState(() {
@@ -298,6 +258,14 @@ class _LoginPageState extends State <LoginPage> {
           content: Text('Connexion réussi.'),
           backgroundColor: Colors.lightGreen,
         ));
+
+        LoginResponse response = LoginResponse.fromJson(json.decode(res.body));
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('token', response.token);
+
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => HomePage()));
+
         break;
       case Constants.REQUEST_NOT_FOUND_CODE:
         setState(() {
@@ -326,19 +294,17 @@ class _LoginPageState extends State <LoginPage> {
 
         scaffoldKey.currentState.showSnackBar(SnackBar(
           content:
-          Text('Désolé, une erreur est survenue. Réessayer ultérieurement'),
+              Text('Désolé, une erreur est survenue. Réessayer ultérieurement'),
           backgroundColor: Colors.redAccent,
         ));
     }
 
     Timer(Duration(milliseconds: 4000), () {
-      setState(() {
-        loadingState = 0;
-      });
+      if (this.mounted) {
+        setState(() {
+          loadingState = 0;
+        });
+      }
     });
   }
 }
-
-
-
-

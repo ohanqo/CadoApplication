@@ -64,7 +64,7 @@ class CadeauDetails extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 23.0,
                                       color: Color.fromARGB(255, 3, 51, 51))),
-                              Text(snapshot.data.price,
+                              Text(snapshot.data.price.toString(),
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16.0,

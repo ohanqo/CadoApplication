@@ -1,9 +1,9 @@
 import 'package:cadeaux_app/components/InvitationItem.dart';
 import 'package:cadeaux_app/components/ListItem.dart';
+import 'package:cadeaux_app/pages/AddFriends.dart';
 import 'package:flutter/material.dart';
 
 class Friends extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +44,7 @@ class Friends extends StatelessWidget {
                               ),
                             ),
                             FlatButton(
-                                onPressed: () {},
+                                onPressed: () => {},
                                 splashColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 child: Text(
@@ -78,7 +78,10 @@ class Friends extends StatelessWidget {
               ),
               Expanded(
                   child: ListView.builder(
-                itemBuilder: (_, int index) => ListItem(name: "Jean Dupont", type: 'delete',),
+                itemBuilder: (_, int index) => ListItem(
+                      name: "Jean Dupont",
+                      type: 'delete',
+                    ),
                 itemCount: 20,
               )),
             ],
@@ -91,7 +94,12 @@ class Friends extends StatelessWidget {
           size: 50.0,
           color: Theme.of(context).primaryColor,
         ),
-        onPressed: () {},
+        onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddFriends(),
+              ),
+            ),
       ),
     );
   }

@@ -74,9 +74,19 @@ class Wish extends StatelessWidget {
                     color: Colors.red,
                     size: 30.0,
                   ),
-                  onPressed: () {
-                    print("delete");
-                  },
+                  onPressed: () => AlertDialog(
+                        title: Text("Alert Dialog title"),
+                        content: Text("Alert Dialog body"),
+                        actions: <Widget>[
+                          // usually buttons at the bottom of the dialog
+                          FlatButton(
+                            child: Text("Close"),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      ),
                 )
               ],
             ),

@@ -1,11 +1,19 @@
 import 'package:cadeaux_app/models/Cadeau.dart';
 import 'package:cadeaux_app/pages/CadeauDetails.dart';
+import 'package:cadeaux_app/repositories/GiftRepository.dart';
 import 'package:flutter/material.dart';
+import 'package:cadeaux_app/utils/EventBus.dart';
+import 'package:cadeaux_app/events/GiftDeletedEvent.dart';
 
 class Wish extends StatelessWidget {
   final Cadeau gift;
 
   Wish(this.gift);
+
+  deleteGift() async {
+    await GiftRepository.instance.deleteGift(gift.id);
+    eventBus.fire(GiftDeletedEvent());
+  }
 
   Widget build(BuildContext context) {
     return Container(
@@ -74,18 +82,22 @@ class Wish extends StatelessWidget {
                     color: Colors.red,
                     size: 30.0,
                   ),
-                  onPressed: () => AlertDialog(
-                        title: Text("Alert Dialog title"),
-                        content: Text("Alert Dialog body"),
-                        actions: <Widget>[
-                          // usually buttons at the bottom of the dialog
-                          FlatButton(
-                            child: Text("Close"),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
+                  onPressed: () => showDialog(
+                        context: context,
+                        child: AlertDialog(
+                          title: Text("Confirmation"),
+                          content: Text(
+                              "Êtes-vous sûr de vouloir supprimer le cadeau: ${gift.name} ?"),
+                          actions: <Widget>[
+                            FlatButton(
+                              child: Text("Supprimer"),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                deleteGift();
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                 )
               ],

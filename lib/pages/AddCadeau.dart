@@ -1,7 +1,3 @@
-// import 'dart:convert';
-// import 'dart:io';
-
-// import 'package:http/http.dart' as http;
 import 'dart:io';
 
 import 'package:cadeaux_app/dtos/AddCadeauDto.dart';

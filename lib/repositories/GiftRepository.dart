@@ -20,4 +20,8 @@ class GiftRepository {
   Future<http.Response> getGifts() async {
     return await authHttp.get("${Constants.API_BASE_URL}/gifts");
   }
+
+  Future<http.Response> deleteGift(int id) async {
+    return await authHttp.delete("${Constants.API_BASE_URL}/gift/$id");
+  }
 }

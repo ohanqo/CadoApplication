@@ -6,6 +6,7 @@ import 'package:cadeaux_app/repositories/GiftRepository.dart';
 import 'package:cadeaux_app/utils/Constants.dart';
 import 'package:cadeaux_app/utils/EventBus.dart';
 import 'package:cadeaux_app/events/GiftCreatedEvent.dart';
+import 'package:cadeaux_app/events/GiftDeletedEvent.dart';
 import 'package:flutter/material.dart';
 import 'package:cadeaux_app/components/UserInfo.dart';
 import 'dart:convert';
@@ -26,8 +27,10 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     myFuture = GiftRepository.instance.getGifts();
 
-    eventBus.on<GiftCreatedEvent>().listen((event) {
-      myFuture = GiftRepository.instance.getGifts();
+    eventBus.on().listen((event) {
+      setState(() {
+        myFuture = GiftRepository.instance.getGifts();
+      });
     });
   }
 
@@ -78,8 +81,7 @@ class _HomePageState extends State<HomePage> {
                 future: myFuture,
                 builder: (context, snapshot) {
                   if (snapshot.hasData &&
-                      snapshot.data.statusCode ==
-                          Constants.REQUEST_CREATED_CODE) {
+                      snapshot.data.statusCode == Constants.REQUEST_OK_CODE) {
                     Map list = json.decode(snapshot.data.body);
                     final List<Cadeau> gifts = list.values
                         .map((jsonValue) => Cadeau.fromJson(jsonValue))

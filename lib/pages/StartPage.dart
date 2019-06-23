@@ -27,9 +27,10 @@ class _StartPageState extends State<StartPage> {
 
     var background = Container(
       decoration: BoxDecoration(
-          color: Colors.white,
-          image: DecorationImage(
-              image: AssetImage("assets/background.png"), fit: BoxFit.fill)),
+        color: Colors.white,
+        image: DecorationImage(
+            image: AssetImage("assets/background.png"), fit: BoxFit.fill),
+      ),
     );
 
     var loadingScreen = Stack(

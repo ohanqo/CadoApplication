@@ -12,6 +12,12 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>cadeaux_app</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Ajouter une image pour un cadeau</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Pour prendre une photo et l&apos;ajouter en tant qu&apos;image de profil</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Pour enregistrer des vidéos</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

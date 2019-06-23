@@ -9,7 +9,7 @@ class UserInfo extends StatelessWidget {
             child: Column(
           children: <Widget>[
             Container(
-              margin: const EdgeInsets.only(top: 40.0, bottom: 20.0),
+              margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
               width: 150.0,
               height: 150.0,
               decoration: BoxDecoration(

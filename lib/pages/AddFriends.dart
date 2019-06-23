@@ -1,4 +1,3 @@
-import 'package:cadeaux_app/components/MenuNavbar.dart';
 import 'package:cadeaux_app/components/RoundedTextField.dart';
 import 'package:cadeaux_app/components/ListItem.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,8 @@ class AddFriends extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(top: 25.0, left: 15.0, bottom: 5.0),
+                    padding: const EdgeInsets.only(
+                        top: 25.0, left: 15.0, bottom: 5.0),
                     child: Text("Résultat",
                         style: TextStyle(
                             fontFamily: 'Segoe',
@@ -32,13 +32,14 @@ class AddFriends extends StatelessWidget {
               ),
               Expanded(
                   child: ListView.builder(
-                itemBuilder: (_, int index) => ListItem(name: "Jean Jacques",),
+                itemBuilder: (_, int index) => ListItem(
+                      name: "Jean Jacques",
+                    ),
                 itemCount: 5,
               )),
             ],
           ),
         ),
-        bottomNavigationBar: MenuNavbar(),
       ),
     );
   }
